@@ -1,0 +1,134 @@
+{
+  "name": "eex",
+  "rules": {
+    "fragment": {
+      "type": "REPEAT",
+      "content": {
+        "type": "SYMBOL",
+        "name": "_node"
+      }
+    },
+    "_node": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "text"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "comment"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "directive"
+        }
+      ]
+    },
+    "directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "<%"
+            },
+            {
+              "type": "STRING",
+              "value": "<%="
+            },
+            {
+              "type": "STRING",
+              "value": "<%%"
+            },
+            {
+              "type": "STRING",
+              "value": "<%%="
+            }
+          ]
+        },
+        {
+          "type": "PREC_LEFT",
+          "value": 0,
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "ALIAS",
+                "content": {
+                  "type": "REPEAT1",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "code"
+                  }
+                },
+                "named": false,
+                "value": "code"
+              },
+              {
+                "type": "STRING",
+                "value": "%>"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "comment": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "<%#"
+        },
+        {
+          "type": "PREC_LEFT",
+          "value": 0,
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "ALIAS",
+                "content": {
+                  "type": "REPEAT1",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "code"
+                  }
+                },
+                "named": false,
+                "value": "text"
+              },
+              {
+                "type": "STRING",
+                "value": "%>"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "text": {
+      "type": "PATTERN",
+      "value": "[^<]+|<"
+    },
+    "code": {
+      "type": "PATTERN",
+      "value": "[^%]+|%"
+    }
+  },
+  "extras": [
+    {
+      "type": "PATTERN",
+      "value": "\\s"
+    }
+  ],
+  "conflicts": [],
+  "precedences": [],
+  "externals": [],
+  "inline": [],
+  "supertypes": []
+}
+

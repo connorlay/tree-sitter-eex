@@ -1,0 +1,89 @@
+[
+  {
+    "type": "code",
+    "named": false,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "code",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "comment",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "directive",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "fragment",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "comment",
+          "named": true
+        },
+        {
+          "type": "directive",
+          "named": true
+        },
+        {
+          "type": "text",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "text",
+    "named": false,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "code",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "%>",
+    "named": false
+  },
+  {
+    "type": "<%",
+    "named": false
+  },
+  {
+    "type": "<%#",
+    "named": false
+  },
+  {
+    "type": "<%%",
+    "named": false
+  },
+  {
+    "type": "<%%=",
+    "named": false
+  },
+  {
+    "type": "<%=",
+    "named": false
+  }
+]
