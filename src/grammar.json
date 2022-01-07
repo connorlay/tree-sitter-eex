@@ -58,7 +58,7 @@
               {
                 "type": "ALIAS",
                 "content": {
-                  "type": "REPEAT1",
+                  "type": "REPEAT",
                   "content": {
                     "type": "SYMBOL",
                     "name": "code"
@@ -92,7 +92,7 @@
               {
                 "type": "ALIAS",
                 "content": {
-                  "type": "REPEAT1",
+                  "type": "REPEAT",
                   "content": {
                     "type": "SYMBOL",
                     "name": "code"

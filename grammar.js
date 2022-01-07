@@ -14,7 +14,7 @@ module.exports = grammar({
       choice('<%', '<%=', '<%%', '<%%='),
       prec.left(
         seq(
-          alias(repeat1($.code), 'code'),
+          alias(repeat($.code), 'code'),
           '%>',
         )
       )
@@ -24,7 +24,7 @@ module.exports = grammar({
       '<%#',
       prec.left(
         seq(
-          alias(repeat1($.code), 'text'),
+          alias(repeat($.code), 'text'),
           '%>'
         )
       )
