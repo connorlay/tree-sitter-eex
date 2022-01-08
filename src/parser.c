@@ -12,9 +12,9 @@
 #define ALIAS_COUNT 0
 #define TOKEN_COUNT 16
 #define EXTERNAL_TOKEN_COUNT 0
-#define FIELD_COUNT 1
+#define FIELD_COUNT 0
 #define MAX_ALIAS_SEQUENCE_LENGTH 4
-#define PRODUCTION_ID_COUNT 3
+#define PRODUCTION_ID_COUNT 1
 
 enum {
   anon_sym_LT_PERCENT = 1,
@@ -52,7 +52,7 @@ static const char * const ts_symbol_names[] = {
   [anon_sym_LT_PERCENT_PERCENT] = "<%%",
   [anon_sym_LT_PERCENT_PERCENT_EQ] = "<%%=",
   [anon_sym_PERCENT_GT] = "%>",
-  [aux_sym_partial_expression_token1] = "end",
+  [aux_sym_partial_expression_token1] = "partial_expression_token1",
   [anon_sym_do] = "do",
   [anon_sym_DASH_GT] = "->",
   [anon_sym_POUND] = "#",
@@ -131,7 +131,7 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .named = false,
   },
   [aux_sym_partial_expression_token1] = {
-    .visible = true,
+    .visible = false,
     .named = false,
   },
   [anon_sym_do] = {
@@ -214,27 +214,6 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = false,
     .named = false,
   },
-};
-
-enum {
-  field_kind = 1,
-};
-
-static const char * const ts_field_names[] = {
-  [0] = NULL,
-  [field_kind] = "kind",
-};
-
-static const TSFieldMapSlice ts_field_map_slices[PRODUCTION_ID_COUNT] = {
-  [1] = {.index = 0, .length = 1},
-  [2] = {.index = 1, .length = 1},
-};
-
-static const TSFieldMapEntry ts_field_map_entries[] = {
-  [0] =
-    {field_kind, 0},
-  [1] =
-    {field_kind, 1},
 };
 
 static const TSSymbol ts_alias_sequences[PRODUCTION_ID_COUNT][MAX_ALIAS_SEQUENCE_LENGTH] = {
@@ -818,41 +797,41 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(25), 1,
       aux_sym_partial_expression_repeat1,
   [228] = 3,
-    ACTIONS(109), 1,
+    ACTIONS(107), 1,
       anon_sym_PERCENT_GT,
-    ACTIONS(111), 1,
+    ACTIONS(109), 1,
       sym__code,
     STATE(24), 1,
       aux_sym_partial_expression_repeat1,
   [238] = 3,
     ACTIONS(80), 1,
       sym__code,
-    ACTIONS(113), 1,
+    ACTIONS(111), 1,
       anon_sym_PERCENT_GT,
     STATE(25), 1,
       aux_sym_partial_expression_repeat1,
   [248] = 3,
     ACTIONS(67), 1,
       anon_sym_PERCENT_GT,
-    ACTIONS(115), 1,
+    ACTIONS(113), 1,
       sym__code,
     STATE(25), 1,
       aux_sym_partial_expression_repeat1,
   [258] = 2,
-    ACTIONS(118), 1,
+    ACTIONS(116), 1,
       anon_sym_PERCENT_GT,
-    ACTIONS(120), 1,
+    ACTIONS(118), 1,
       anon_sym_POUND,
   [265] = 2,
-    ACTIONS(122), 1,
+    ACTIONS(120), 1,
       anon_sym_PERCENT_GT,
-    ACTIONS(124), 1,
+    ACTIONS(122), 1,
       anon_sym_POUND,
   [272] = 1,
-    ACTIONS(126), 1,
+    ACTIONS(124), 1,
       anon_sym_PERCENT_GT,
   [276] = 1,
-    ACTIONS(128), 1,
+    ACTIONS(126), 1,
       ts_builtin_sym_end,
 };
 
@@ -929,25 +908,24 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [84] = {.entry = {.count = 1, .reusable = false}}, SHIFT(14),
   [86] = {.entry = {.count = 1, .reusable = false}}, SHIFT(21),
   [88] = {.entry = {.count = 1, .reusable = false}}, SHIFT(5),
-  [90] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_partial_expression, 2, .production_id = 1),
+  [90] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_partial_expression, 2),
   [92] = {.entry = {.count = 1, .reusable = false}}, SHIFT(22),
-  [94] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_partial_expression, 1, .production_id = 1),
+  [94] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_partial_expression, 1),
   [96] = {.entry = {.count = 1, .reusable = false}}, SHIFT(17),
   [98] = {.entry = {.count = 1, .reusable = false}}, SHIFT(16),
   [100] = {.entry = {.count = 1, .reusable = false}}, SHIFT(10),
   [102] = {.entry = {.count = 2, .reusable = false}}, REDUCE(aux_sym__bang_comment_repeat1, 2), SHIFT_REPEAT(21),
   [105] = {.entry = {.count = 1, .reusable = false}}, REDUCE(aux_sym__bang_comment_repeat1, 2),
-  [107] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_partial_expression, 3, .production_id = 1),
-  [109] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_partial_expression, 3, .production_id = 2),
-  [111] = {.entry = {.count = 1, .reusable = false}}, SHIFT(24),
-  [113] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_partial_expression, 4, .production_id = 2),
-  [115] = {.entry = {.count = 2, .reusable = false}}, REDUCE(aux_sym_partial_expression_repeat1, 2), SHIFT_REPEAT(25),
-  [118] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_partial_expression, 1, .production_id = 1),
-  [120] = {.entry = {.count = 1, .reusable = true}}, SHIFT(18),
-  [122] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_partial_expression, 2, .production_id = 2),
-  [124] = {.entry = {.count = 1, .reusable = true}}, SHIFT(23),
-  [126] = {.entry = {.count = 1, .reusable = true}}, SHIFT(9),
-  [128] = {.entry = {.count = 1, .reusable = true}},  ACCEPT_INPUT(),
+  [107] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_partial_expression, 3),
+  [109] = {.entry = {.count = 1, .reusable = false}}, SHIFT(24),
+  [111] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_partial_expression, 4),
+  [113] = {.entry = {.count = 2, .reusable = false}}, REDUCE(aux_sym_partial_expression_repeat1, 2), SHIFT_REPEAT(25),
+  [116] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_partial_expression, 1),
+  [118] = {.entry = {.count = 1, .reusable = true}}, SHIFT(18),
+  [120] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_partial_expression, 2),
+  [122] = {.entry = {.count = 1, .reusable = true}}, SHIFT(23),
+  [124] = {.entry = {.count = 1, .reusable = true}}, SHIFT(9),
+  [126] = {.entry = {.count = 1, .reusable = true}},  ACCEPT_INPUT(),
 };
 
 #ifdef __cplusplus
@@ -974,9 +952,6 @@ extern const TSLanguage *tree_sitter_eex(void) {
     .small_parse_table_map = ts_small_parse_table_map,
     .parse_actions = ts_parse_actions,
     .symbol_names = ts_symbol_names,
-    .field_names = ts_field_names,
-    .field_map_slices = ts_field_map_slices,
-    .field_map_entries = ts_field_map_entries,
     .symbol_metadata = ts_symbol_metadata,
     .public_symbol_map = ts_symbol_map,
     .alias_map = ts_non_terminal_alias_map,

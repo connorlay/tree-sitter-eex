@@ -54,26 +54,7 @@
   {
     "type": "partial_expression",
     "named": true,
-    "fields": {
-      "kind": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "->",
-            "named": false
-          },
-          {
-            "type": "do",
-            "named": false
-          },
-          {
-            "type": "end",
-            "named": false
-          }
-        ]
-      }
-    }
+    "fields": {}
   },
   {
     "type": "#",
@@ -117,10 +98,6 @@
   },
   {
     "type": "do",
-    "named": false
-  },
-  {
-    "type": "end",
     "named": false
   },
   {

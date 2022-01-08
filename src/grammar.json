@@ -95,17 +95,8 @@
               "type": "SEQ",
               "members": [
                 {
-                  "type": "FIELD",
-                  "name": "kind",
-                  "content": {
-                    "type": "ALIAS",
-                    "content": {
-                      "type": "PATTERN",
-                      "value": "end[\\)\\]\\}]*"
-                    },
-                    "named": false,
-                    "value": "end"
-                  }
+                  "type": "PATTERN",
+                  "value": "end[\\)\\]\\}]*"
                 },
                 {
                   "type": "REPEAT",
@@ -127,21 +118,17 @@
                   }
                 },
                 {
-                  "type": "FIELD",
-                  "name": "kind",
-                  "content": {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "STRING",
-                        "value": "do"
-                      },
-                      {
-                        "type": "STRING",
-                        "value": "->"
-                      }
-                    ]
-                  }
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": "do"
+                    },
+                    {
+                      "type": "STRING",
+                      "value": "->"
+                    }
+                  ]
                 },
                 {
                   "type": "CHOICE",
