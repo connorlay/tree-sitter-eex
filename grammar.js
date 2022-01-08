@@ -22,8 +22,8 @@ module.exports = grammar({
 
     partial_expression: $ => seq(
       choice(
-        seq(field("kind", alias(/end[\)\]\}]*/, "end")), repeat($._code)),
-        seq(repeat($._code), field("kind", choice("do", "->")), optional(seq("#", repeat($._code)))),
+        seq(field('kind', alias(/end[\)\]\}]*/, 'end')), repeat($._code)),
+        seq(repeat($._code), field('kind', choice('do', '->')), optional(seq('#', repeat($._code)))),
       ),
     ),
 
