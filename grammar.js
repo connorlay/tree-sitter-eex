@@ -20,11 +20,9 @@ module.exports = grammar({
       )
     ),
 
-    partial_expression: $ => seq(
-      choice(
-        seq(/end[\)\]\}]*/, repeat($._code)),
-        seq(repeat($._code), choice('do', '->'), optional(seq('#', repeat($._code)))),
-      ),
+    partial_expression: $ => choice(
+      seq(/end[\)\]\}]*/, repeat($._code)),
+      seq(repeat($._code), choice('do', '->'), optional(seq('#', repeat($._code)))),
     ),
 
     expression: $ => repeat1($._code),
