@@ -56,16 +56,25 @@
             "type": "SEQ",
             "members": [
               {
-                "type": "ALIAS",
-                "content": {
-                  "type": "REPEAT",
-                  "content": {
-                    "type": "SYMBOL",
-                    "name": "_code"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "partial_expression"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "expression"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "BLANK"
                   }
-                },
-                "named": false,
-                "value": "code"
+                ]
               },
               {
                 "type": "STRING",
@@ -75,6 +84,76 @@
           }
         }
       ]
+    },
+    "partial_expression": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "kind",
+              "content": {
+                "type": "ALIAS",
+                "content": {
+                  "type": "PATTERN",
+                  "value": "end[\\)\\]\\}]*"
+                },
+                "named": false,
+                "value": "end"
+              }
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_code"
+              }
+            }
+          ]
+        },
+        {
+          "type": "PREC_RIGHT",
+          "value": 0,
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "REPEAT",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_code"
+                }
+              },
+              {
+                "type": "FIELD",
+                "name": "kind",
+                "content": {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": "do"
+                    },
+                    {
+                      "type": "STRING",
+                      "value": "->"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "expression": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "SYMBOL",
+        "name": "_code"
+      }
     },
     "comment": {
       "type": "CHOICE",
@@ -153,7 +232,7 @@
     },
     "_code": {
       "type": "PATTERN",
-      "value": "[^%]+|%"
+      "value": "[^%\\s]+|[%\\s]"
     }
   },
   "extras": [

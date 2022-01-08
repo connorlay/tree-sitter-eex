@@ -14,11 +14,18 @@ module.exports = grammar({
       choice('<%', '<%=', '<%%', '<%%='),
       prec.left(
         seq(
-          alias(repeat($._code), 'code'),
+          optional(choice($.partial_expression, $.expression)),
           '%>',
         )
       )
     ),
+
+    partial_expression: $ => choice(
+      seq(field("kind", alias(/end[\)\]\}]*/, "end")), repeat($._code)),
+      prec.right(seq(repeat($._code), field("kind", choice("do", "->")))),
+    ),
+
+    expression: $ => repeat1($._code),
 
     comment: $ => choice($._hash_comment, $._bang_comment),
 
@@ -44,5 +51,5 @@ module.exports = grammar({
 
     text: $ => /[^<]+|</,
 
-    _code: $ => /[^%]+|%/,
+    _code: $ => /[^%\s]+|[%\s]/,
 }})
