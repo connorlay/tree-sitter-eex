@@ -122,3 +122,21 @@ Directive containing an anonymous function is not marked as a partial expression
   (directive
     (expression))
   (text))
+
+================================================================================
+Directive with partial expression and trailing comment
+================================================================================
+
+<%= if @x do # this should always be true %>
+  It's true!
+<% end %>
+
+--------------------------------------------------------------------------------
+
+(fragment
+  (directive
+    (partial_expression))
+  (text)
+  (directive
+    (partial_expression))
+  (text))
