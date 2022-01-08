@@ -2,17 +2,7 @@
   {
     "type": "code",
     "named": false,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "code",
-          "named": true
-        }
-      ]
-    }
+    "fields": {}
   },
   {
     "type": "comment",
@@ -48,26 +38,19 @@
     }
   },
   {
-    "type": "text",
-    "named": false,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "code",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "%>",
     "named": false
   },
   {
+    "type": "--%>",
+    "named": false
+  },
+  {
     "type": "<%",
+    "named": false
+  },
+  {
+    "type": "<%!--",
     "named": false
   },
   {
@@ -85,5 +68,9 @@
   {
     "type": "<%=",
     "named": false
+  },
+  {
+    "type": "text",
+    "named": true
   }
 ]

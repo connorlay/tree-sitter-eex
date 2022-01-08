@@ -14,23 +14,35 @@ module.exports = grammar({
       choice('<%', '<%=', '<%%', '<%%='),
       prec.left(
         seq(
-          alias(repeat($.code), 'code'),
+          alias(repeat($._code), 'code'),
           '%>',
         )
       )
     ),
 
-    comment: $ => seq(
+    comment: $ => choice($._hash_comment, $._bang_comment),
+
+    _hash_comment: $ => seq(
       '<%#',
       prec.left(
         seq(
-          alias(repeat($.code), 'text'),
+          repeat($._code),
           '%>'
+        )
+      )
+    ),
+
+    _bang_comment: $ => seq(
+      '<%!--',
+      prec.left(
+        seq(
+          repeat(/[^-]+|-/),
+          '--%>'
         )
       )
     ),
 
     text: $ => /[^<]+|</,
 
-    code: $ => /[^%]+|%/,
+    _code: $ => /[^%]+|%/,
 }})
