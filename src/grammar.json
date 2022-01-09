@@ -61,7 +61,7 @@
                   "type": "REPEAT",
                   "content": {
                     "type": "SYMBOL",
-                    "name": "code"
+                    "name": "_code"
                   }
                 },
                 "named": false,
@@ -77,6 +77,19 @@
       ]
     },
     "comment": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_hash_comment"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_bang_comment"
+        }
+      ]
+    },
+    "_hash_comment": {
       "type": "SEQ",
       "members": [
         {
@@ -90,16 +103,11 @@
             "type": "SEQ",
             "members": [
               {
-                "type": "ALIAS",
+                "type": "REPEAT",
                 "content": {
-                  "type": "REPEAT",
-                  "content": {
-                    "type": "SYMBOL",
-                    "name": "code"
-                  }
-                },
-                "named": false,
-                "value": "text"
+                  "type": "SYMBOL",
+                  "name": "_code"
+                }
               },
               {
                 "type": "STRING",
@@ -110,11 +118,40 @@
         }
       ]
     },
+    "_bang_comment": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "<%!--"
+        },
+        {
+          "type": "PREC_LEFT",
+          "value": 0,
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "REPEAT",
+                "content": {
+                  "type": "PATTERN",
+                  "value": "[^-]+|-"
+                }
+              },
+              {
+                "type": "STRING",
+                "value": "--%>"
+              }
+            ]
+          }
+        }
+      ]
+    },
     "text": {
       "type": "PATTERN",
       "value": "[^<]+|<"
     },
-    "code": {
+    "_code": {
       "type": "PATTERN",
       "value": "[^%]+|%"
     }
