@@ -17,6 +17,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "newline"
+        },
+        {
+          "type": "SYMBOL",
           "name": "comment"
         },
         {
@@ -235,7 +239,11 @@
     },
     "text": {
       "type": "PATTERN",
-      "value": "[^<]+|<"
+      "value": "[^<\\r\\n]+|<"
+    },
+    "newline": {
+      "type": "PATTERN",
+      "value": "\\r?\\n"
     },
     "_code": {
       "type": "PATTERN",
@@ -245,7 +253,7 @@
   "extras": [
     {
       "type": "PATTERN",
-      "value": "\\s"
+      "value": "[\\t\\f\\v ]"
     }
   ],
   "conflicts": [],

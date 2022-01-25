@@ -1,11 +1,14 @@
 module.exports = grammar({
   name: 'eex',
 
+  extras: $ => [/[\t\f\v ]/],
+
   rules: {
     fragment: $ => repeat($._node),
 
     _node: $ => choice(
       $.text,
+      $.newline,
       $.comment,
       $.directive
     ),
@@ -49,7 +52,8 @@ module.exports = grammar({
       )
     ),
 
-    text: $ => /[^<]+|</,
+    text: $ => /[^<\r\n]+|</,
+    newline: $ => /\r?\n/,
 
     _code: $ => /[^%\s]+|[%\s]/,
 }})

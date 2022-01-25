@@ -7,8 +7,9 @@ Empty Directive
 --------------------------------------------------------------------------------
 
 (fragment
+  (newline)
   (directive)
-  (text))
+  (newline))
 
 ================================================================================
 Directive with just an assign
@@ -21,10 +22,14 @@ I am more some text!
 --------------------------------------------------------------------------------
 
 (fragment
+  (newline)
   (text)
+  (newline)
   (directive
     (expression))
-  (text))
+  (newline)
+  (text)
+  (newline))
 
 ================================================================================
 Directive with a conditional block
@@ -37,12 +42,15 @@ Hello, tree-sitter!
 --------------------------------------------------------------------------------
 
 (fragment
+  (newline)
   (directive
     (partial_expression))
+  (newline)
   (text)
+  (newline)
   (directive
     (partial_expression))
-  (text))
+  (newline))
 
 ================================================================================
 Directive with multiple case stanzas
@@ -57,20 +65,25 @@ Directive with multiple case stanzas
 --------------------------------------------------------------------------------
 
 (fragment
+  (newline)
   (directive
     (partial_expression))
-  (directive
-    (partial_expression))
-  (text)
-  (directive
-    (partial_expression))
-  (text)
+  (newline)
   (directive
     (partial_expression))
   (text)
+  (newline)
   (directive
     (partial_expression))
-  (text))
+  (text)
+  (newline)
+  (directive
+    (partial_expression))
+  (text)
+  (newline)
+  (directive
+    (partial_expression))
+  (newline))
 
 ================================================================================
 Directive with parenthesized anonymous function
@@ -83,13 +96,16 @@ Directive with parenthesized anonymous function
 --------------------------------------------------------------------------------
 
 (fragment
+  (newline)
   (directive
     (partial_expression))
+  (newline)
   (directive
     (expression))
+  (newline)
   (directive
     (partial_expression))
-  (text))
+  (newline))
 
 ================================================================================
 Directive with unparenthesized anonymous function
@@ -102,13 +118,16 @@ Directive with unparenthesized anonymous function
 --------------------------------------------------------------------------------
 
 (fragment
+  (newline)
   (directive
     (partial_expression))
+  (newline)
   (directive
     (expression))
+  (newline)
   (directive
     (partial_expression))
-  (text))
+  (newline))
 
 ================================================================================
 Directive containing an anonymous function is not marked as a partial expression
@@ -119,9 +138,10 @@ Directive containing an anonymous function is not marked as a partial expression
 --------------------------------------------------------------------------------
 
 (fragment
+  (newline)
   (directive
     (expression))
-  (text))
+  (newline))
 
 ================================================================================
 Directive with partial expression and trailing comment
@@ -134,9 +154,12 @@ Directive with partial expression and trailing comment
 --------------------------------------------------------------------------------
 
 (fragment
+  (newline)
   (directive
     (partial_expression))
+  (newline)
   (text)
+  (newline)
   (directive
     (partial_expression))
-  (text))
+  (newline))

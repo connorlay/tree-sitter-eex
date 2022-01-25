@@ -45,6 +45,10 @@
           "named": true
         },
         {
+          "type": "newline",
+          "named": true
+        },
+        {
           "type": "text",
           "named": true
         }
@@ -99,6 +103,10 @@
   {
     "type": "do",
     "named": false
+  },
+  {
+    "type": "newline",
+    "named": true
   },
   {
     "type": "text",
